@@ -29,9 +29,12 @@ public class AppRate {
     private View view;
 
     private OnClickButtonListener listener;
+    private int DEFAULT_NOTICE_ICON_RES_ID = 0;
+    private int mNoticeIconResId;
 
     private AppRate(Context context) {
         this.context = context.getApplicationContext();
+        this.mNoticeIconResId = this.DEFAULT_NOTICE_ICON_RES_ID;
     }
 
     public static AppRate with(Context context) {
@@ -67,6 +70,11 @@ public class AppRate {
 
     public AppRate setEventsTimes(int eventsTimes) {
         this.eventsTimes = eventsTimes;
+        return this;
+    }
+    
+    public AppRate setNoticeIcon(int noticeIconResId) {
+        this.mNoticeIconResId = noticeIconResId;
         return this;
     }
 
@@ -136,7 +144,7 @@ public class AppRate {
 
     public void showRateDialog(Activity activity) {
         if(!activity.isFinishing()) {
-            DialogManager.create(activity, isShowNeutralButton, isShowTitle, listener, view).show();
+            DialogManager.create(activity, isShowNeutralButton, isShowTitle, listener, view, mNoticeIconResId).show();
         }
     }
 
