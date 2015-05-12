@@ -16,7 +16,7 @@ final class DialogManager {
 
     static Dialog create(final Context context, final boolean isShowNeutralButton,
                          final boolean isShowTitle, final OnClickButtonListener listener,
-                         final View view) {
+                         final View view, final int dialogIconResId) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(R.string.rate_dialog_message);
         if (view != null) builder.setView(view);
@@ -55,6 +55,7 @@ final class DialogManager {
         } else {
             dialog.setTitle(R.string.rate_dialog_title);
         }
+        builder.setIcon(dialogIconResId);
         return dialog;
     }
 
